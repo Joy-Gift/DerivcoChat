@@ -1,12 +1,46 @@
-﻿using System;
+﻿using LiteDB;
+using Microsoft.AspNetCore.Razor.Language;
+using System;
+using System.IO;
 
 namespace ChatAppWinterSchool.DataAccess
 {
     public class ChatSystemStore : IChatSystemStore
     {
+        private const string ChatDatabase = @"Chat.db";
+        private LiteDatabase _db;
+        private LiteCollection<User> Users;
+        public ChatSystemStore()
+        {
+            bool existingDb = File.Exists(ChatDatabase);
+
+            if (!existingDb)
+            {
+                _db = new LiteDatabase(ChatDatabase);
+                 Users = _db.GetCollection<User>("users");
+
+                var Shailen = new User
+                {
+                    NickName = "Shailen",
+                    Password = "shailen31"
+                };
+
+                var Micaylin = new User
+                {
+                    NickName = "Micaylin",
+                    Password = "Micaylin14"
+                };
+
+                Users.Insert(Shailen);
+                Users.Insert(Micaylin);
+
+            }
+            
+        }
         public bool ValidateUser(LoginCredentials credentials)
         {
-            throw new NotImplementedException();
+          // if(Users.Exists(credentials.NickName))
+          //  return true;
         }
     }
 }
