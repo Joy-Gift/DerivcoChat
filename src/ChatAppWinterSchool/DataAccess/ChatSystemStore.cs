@@ -6,6 +6,7 @@ namespace ChatAppWinterSchool.DataAccess
     {
         public bool ValidateUser(LoginCredentials credentials)
         {
+            //bye
             throw new NotImplementedException();
         }
     }
