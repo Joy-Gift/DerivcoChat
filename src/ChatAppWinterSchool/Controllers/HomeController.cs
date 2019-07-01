@@ -10,6 +10,13 @@ namespace ChatAppWinterSchool.Controllers
 {
     public class HomeController : Controller
     {
+        private IChatSystemStore _store;
+
+        public HomeController(IChatSystemStore store)
+        {
+            _store = store; 
+        }
+
         public IActionResult Index()
         {
             return View();
