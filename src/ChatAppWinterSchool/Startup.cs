@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ChatAppWinterSchool.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +26,7 @@ namespace ChatAppWinterSchool
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddSingleton<IChatSystemStore>(new ChatSystemStore());
 
             services.Configure<CookiePolicyOptions>(options =>
             {
