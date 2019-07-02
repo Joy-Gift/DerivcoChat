@@ -17,7 +17,7 @@ namespace ChatAppWinterSchool.DataAccess
             if (!existingDb)
             {
                 _db = new LiteDatabase(ChatDatabase);
-                 Users = _db.GetCollection<User>("users");
+                 Users = _db.GetCollection<User>("Users");
 
                 var Shailen = new User
                 {
