@@ -4,7 +4,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    .btn{
+        border-radius:90px;
+        box-shadow:rgb(40, 40, 40) 2px 2px;
+    }
 
+</style>
 
 
 <div class="text-center">
@@ -20,20 +26,20 @@
             @ViewBag.Message
         </div>
     }
-    <table align="center">
+    <table align="center" class="back">
         <tr>
 
-            <td align="right">@Html.LabelFor(model => model.NickName, "Username:")</td>
-            <td>@Html.TextBoxFor(model => model.NickName)</td>
-            <td>@Html.ValidationMessageFor(model => model.NickName)</td>
+            <td align="right" >@Html.LabelFor(model => model.NickName, "Username:")</td>
+            <td >@Html.TextBoxFor(model => model.NickName)</td>
+            <td >@Html.ValidationMessageFor(model => model.NickName)</td>
 
         </tr>
-        <tr><td></td></tr>
+        
         <tr>
 
-            <td align="right">@Html.LabelFor(model => model.Password, "Password:")</td>
-            <td>@Html.PasswordFor(model => model.Password)</td>
-            <td>@Html.ValidationMessageFor(model => model.Password)</td>
+            <td align="right" >@Html.LabelFor(model => model.Password, "Password:")</td>
+            <td >@Html.PasswordFor(model => model.Password)</td>
+            <td >@Html.ValidationMessageFor(model => model.Password)</td>
 
         </tr>
         <tr><td></td></tr>
@@ -42,7 +48,7 @@
 
            
 
-            <td align="center"><button type="submit">Login</button></td>
+            <td align="center"><button class="btn" type="submit">Login</button></td>
         </tr>
 
 
