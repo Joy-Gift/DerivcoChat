@@ -43,14 +43,25 @@ namespace ChatAppWinterSchool.Controllers
             return View();
         }
 
-        public IActionResult Validate()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginCredentials lc)
         {
-            using (var db = new LiteDatabase(@"Chat.db"))
-            {
-                var hist = db.GetCollection<User>("users");
+           // using (var db = new LiteDatabase(@"Chat.db"))
+           // {
+            //    var hist = db.GetCollection<User>("users");
                 
+                
+           // }
+           if (lc.NickName.Equals("Shailen") && lc.Password.Equals("1234"))
+            {
+                return RedirectToAction("Index", "Chat");
             }
-            return View("Index", "Chat");
+           else
+           {
+               return View();
+           }
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
