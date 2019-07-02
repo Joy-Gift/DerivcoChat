@@ -1,7 +1,96 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<h2>Chat View</h2>
 
-<p>Use this area to provide additional information.</p>
+
+<style>
+    .container1 {
+        display: table;
+        height: 100%;
+        width: 100%;
+        background: rgba(38, 30, 211, 0.33);
+    }
+    .hold{
+        display:block;
+        background-color:rgba(87, 127, 237, 0.43);
+        align-content:center;
+        text-align:center;
+        font-size:large;
+        font-style:italic;
+        border: 2px solid black;
+    }
+
+    .heads {
+        border-bottom: 1.5px solid black;
+        align-items:center;
+        align-content:center;
+        
+    }
+
+    #chatbox{
+        font-size:medium;
+        align-items:center;
+        align-content:center;
+
+    }
+
+    .send {
+        font-size: medium;
+        border-radius: 90px;
+        border-color: rgba(136, 235, 10, 0.48);
+        background-color:rgba(136, 235, 10, 0.48);
+    }
+
+    #messagebox {
+        font-size: small;
+        border-radius: 90px;
+        background-color: rgba(136, 235, 10, 0.10);
+        align-items:center;
+        align-content:center;
+        width:85%;
+        
+    }
+
+    div{
+        resize:both;
+       
+    }
+
+   
+</style>
+
+<table class="container1">
+    <tbody>
+        <td class="hold">
+            <div class="heads">
+                Channel
+            </div>
+            <div>
+                <br />
+                1
+            </div>
+        </td>
+        <td class="hold">
+            <div class="heads">
+                Squad
+            </div>
+            <div id="chatbox">
+
+                2
+                <br />
+                <input type="text" name="FirstName" placeholder="Type message" id="messagebox">
+                <button value="Send" class="send">Send</button>
+            </div>
+        </td>
+        <td class="hold">
+            <div class="heads">
+               User number
+            </div>
+            <div>
+                <br />
+                3
+            </div>
+        </td>
+    </tbody>
+</table>
