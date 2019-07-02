@@ -53,14 +53,14 @@ namespace ChatAppWinterSchool.Controllers
                 
                 
            // }
-          //  if (lc.NickName.Equals("Shailen") && lc.Password.Equals("1234"))
-            //{
+           if (lc.NickName.Equals("Shailen") && lc.Password.Equals("1234"))
+            {
                 return RedirectToAction("Index", "Chat");
-           // }
-          //  else
-          //  {
-             //   return View();
-          //  }
+            }
+           else
+           {
+               return View();
+           }
 
         }
 

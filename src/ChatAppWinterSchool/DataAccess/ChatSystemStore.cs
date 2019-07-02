@@ -1,6 +1,7 @@
 ﻿using LiteDB;
 using Microsoft.AspNetCore.Razor.Language;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace ChatAppWinterSchool.DataAccess
@@ -12,8 +13,8 @@ namespace ChatAppWinterSchool.DataAccess
          private LiteCollection<User> Users;
          */
 
-            //Users
-        private User Shailen;
+        //Users
+        public User Shailen;
         private User Micaylin;
         private User Sharad;
         private User Thabo;
@@ -54,65 +55,95 @@ namespace ChatAppWinterSchool.DataAccess
             }
             */
 
-            User [] ChatUsers = new User[5] ;
+            List<User> ChatUsers = new List<User>();
 
-            Shailen.ID = 0001;
-            Shailen.NickName = "Shailen";
-            Shailen.Password = "Shailen31";
+            Shailen = new User()
+            {
+                ID = 1,
+                NickName = "Shailen",
+                Password = "Shailen31"
+            };
+            ChatUsers.Add(Shailen);
 
-            Micaylin.ID = 0002;
-            Micaylin.NickName = "Micaylin";
-            Micaylin.Password = "Micaylin14";
 
-            Micaylin.ID = 0003;
-            Micaylin.NickName = "Thabo";
-            Micaylin.Password = "Thabo14";
+            Micaylin = new User()
+            {
+                ID = 2,
+            NickName = "Micaylin",
+            Password = "Micaylin14"
+             };
+            ChatUsers.Add(Micaylin);
 
-            Micaylin.ID = 0004;
-            Micaylin.NickName = "Sharad";
-            Micaylin.Password = "Sharad10";
+            Sharad = new User()
+            {
+                ID = 3,
+                NickName = "Sharad",
+                Password = "Sharad10"
+            };
+            ChatUsers.Add(Sharad);
 
-            Micaylin.ID = 0005;
-            Micaylin.NickName = "Jayden";
-            Micaylin.Password = "Jayden12";
+            Thabo = new User()
+            {
+                ID = 4,
+                NickName = "Thabo",
+                Password = "Thabo14"
+            };
+            ChatUsers.Add(Thabo);
 
-            ChatUsers[0] = Shailen;
-            ChatUsers[1] = Micaylin;
-            ChatUsers[2] = Thabo ;
-            ChatUsers[3] = Sharad;
-            ChatUsers[4] = Jayden;
-
+            Jayden = new User()
+            {
+                ID = 3,
+                NickName = "Jayden",
+                Password = "Jeyden19"
+            };
+            ChatUsers.Add(Jayden);
 
             //Chat Rooms 
 
-            ChatChannel[] ChatChannels = new ChatChannel[5];
+            List<ChatChannel> ChatChannel = new List<ChatChannel>();
 
-            Lobby.chatID = 0001;
-            Lobby.chatName = "Lobby";
-            Lobby.Topic = "Join a Channel";
-           
-            Anime.chatID = 0002;
-            Anime.chatName = "#MangaPanda";
-            Anime.Topic = "Anime - Latest Anime discussions";
+            Lobby = new ChatChannel()
+            {
+                chatID = 0001,
+                chatName = "Lobby",
+                Topic = "Join a Channel",
+            };
+            ChatChannel.Add(Lobby);
 
-            Games.chatID = 0003;
-            Games.chatName = "#Game-On";
-            Games.Topic = "Gaming - Steam Summer sale";
+            Anime = new ChatChannel()
+            {
+                chatID = 0002,
+                chatName = "#MangaPanda",
+                Topic = "Anime - Latest Anime discussions"
 
-            Movies.chatID = 0004;
-            Movies.chatName = "#BlockBusterz";
-            Movies.Topic = "What we watching today?";
+            };
+            ChatChannel.Add(Anime);
 
-            Comics.chatID = 0005;
-            Comics.chatName = "#Comic-Con";
-            Comics.Topic = "Maybe about Superheros?";
+            Games = new ChatChannel()
+            {
+                chatID = 0003,
+                chatName = "#Game-On",
+                Topic = "Gaming - Steam Summer sale"
 
+            };
+            ChatChannel.Add(Games);
 
-            ChatChannels[0] = Lobby;
-            ChatChannels[1] = Anime;
-            ChatChannels[2] = Games;
-            ChatChannels[3] = Movies;
-            ChatChannels[4] = Comics;
+            Movies = new ChatChannel()
+            {
+                chatID = 0004,
+                chatName = "#BlockBusterz",
+                Topic = "What we watching today?"
+            };
+            ChatChannel.Add(Movies);
+
+            Comics = new ChatChannel()
+            {
+
+                chatID = 0005,
+                chatName = "#Comic-Con",
+                Topic = "Maybe about Superheros?"
+            };
+            ChatChannel.Add(Comics);
 
         }
         public bool ValidateUser(LoginCredentials credentials)
