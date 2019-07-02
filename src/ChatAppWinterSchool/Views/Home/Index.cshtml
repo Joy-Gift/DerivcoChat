@@ -1,4 +1,5 @@
 ﻿@model ChatAppWinterSchool.LoginCredentials
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -19,32 +20,44 @@
             @ViewBag.Message
         </div>
     }
-        <table align="center">
-            <tr>
+    <table align="center">
+        <tr>
 
-                <td align="right">@Html.LabelFor(model => model.NickName, "Username:")</td>
-                <td>@Html.TextBoxFor(model => model.NickName)</td>
-                <td>@Html.ValidationMessageFor(model => model.NickName)</td>
+            <td align="right">@Html.LabelFor(model => model.NickName, "Username:")</td>
+            <td>@Html.TextBoxFor(model => model.NickName)</td>
+            <td>@Html.ValidationMessageFor(model => model.NickName)</td>
 
-            </tr>
-            <tr><td></td></tr>
-            <tr>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
 
-                <td align="right">@Html.LabelFor(model => model.Password, "Password:")</td>
-                <td>@Html.PasswordFor(model => model.Password)</td>
-                <td>@Html.ValidationMessageFor(model => model.Password)</td>
+            <td align="right">@Html.LabelFor(model => model.Password, "Password:")</td>
+            <td>@Html.PasswordFor(model => model.Password)</td>
+            <td>@Html.ValidationMessageFor(model => model.Password)</td>
 
-            </tr>
-            <tr><td></td></tr>
-            <tr>
-                <td></td>
-               
-                <td align="center"><input type="submit" value="Log in" /></td>
-               
-                <td></td>
-            </tr>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td></td>
+
+            <!--<td align="center"><input type="submit" value="Log in" /></td>-->
+
+            <!--- Main Code for the login-->
+
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                @Html.TextBoxFor(model => model.NickName)
+                @Html.ValidationMessageFor(model => model.NickName)
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+
+                <button type="submit">Login</button>
+            }
+
+            <td></td>
+        </tr>
 
 
-        </table>
+    </table>
 
 }

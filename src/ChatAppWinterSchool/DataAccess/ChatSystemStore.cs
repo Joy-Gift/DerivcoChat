@@ -14,7 +14,7 @@ namespace ChatAppWinterSchool.DataAccess
          */
 
         //Users
-        public User Shailen;
+        private User Shailen;
         private User Micaylin;
         private User Sharad;
         private User Thabo;

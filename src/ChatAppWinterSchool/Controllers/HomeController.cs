@@ -47,21 +47,27 @@ namespace ChatAppWinterSchool.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginCredentials lc)
         {
-           // using (var db = new LiteDatabase(@"Chat.db"))
-           // {
+            // using (var db = new LiteDatabase(@"Chat.db"))
+            // {
             //    var hist = db.GetCollection<User>("users");
-                
-                
-           // }
-           if (lc.NickName.Equals("Shailen") && lc.Password.Equals("1234"))
+
+
+            // }
+
+            if (_store.ValidateUser(lc))
             {
+                // then move activate lobby 
+                //Console.WriteLine("");
                 return RedirectToAction("Index", "Chat");
             }
-           else
-           {
-               return View();
-           }
+            else
+            {
+                // give message on login page to retry
+                Console.WriteLine("Invalid password ");
+            }
+            
 
+            return Ok();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
