@@ -40,21 +40,9 @@
         <tr>
             <td></td>
 
-            <!--<td align="center"><input type="submit" value="Log in" /></td>-->
+           
 
-            <!--- Main Code for the login-->
-
-            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-            {
-                @Html.TextBoxFor(model => model.NickName)
-                @Html.ValidationMessageFor(model => model.NickName)
-                @Html.PasswordFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
-
-                <button type="submit">Login</button>
-            }
-
-            <td></td>
+            <td align="center"><button type="submit">Login</button></td>
         </tr>
 
 
