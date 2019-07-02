@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ChatAppWinterSchool.Models;
+using LiteDB;
+using ChatAppWinterSchool.DataAccess;
 
 namespace ChatAppWinterSchool.Controllers
 {
@@ -39,6 +41,16 @@ namespace ChatAppWinterSchool.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Validate()
+        {
+            using (var db = new LiteDatabase(@"Chat.db"))
+            {
+                var hist = db.GetCollection<User>("users");
+                
+            }
+            return View("Index", "Chat");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

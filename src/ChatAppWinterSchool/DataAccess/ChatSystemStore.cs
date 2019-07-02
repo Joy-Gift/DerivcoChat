@@ -39,8 +39,9 @@ namespace ChatAppWinterSchool.DataAccess
         }
         public bool ValidateUser(LoginCredentials credentials)
         {
-          // if(Users.Exists(credentials.NickName))
-          //  return true;
+            // if(Users.Exists(credentials.NickName))
+            //  return true;
+            return true;
         }
     }
 }
