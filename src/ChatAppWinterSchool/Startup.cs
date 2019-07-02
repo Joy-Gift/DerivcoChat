@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ChatAppWinterSchool.DataAccess;
+using ChatAppWinterSchool.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,10 +26,11 @@ namespace ChatAppWinterSchool
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IChatSystemStore iChatSystemStore = new ChatSystemStore();
+            ChatHub chatHub = new ChatHub(iChatSystemStore);
 
-            services.AddSingleton<IChatSystemStore>(new ChatSystemStore());
-
-            services.Configure<CookiePolicyOptions>(options =>
+            services.AddSingleton<IChatSystemStore>(iChatSystemStore);
+            services.AddSingleton<ChatHub>(chatHub);  services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
@@ -37,6 +39,8 @@ namespace ChatAppWinterSchool
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
