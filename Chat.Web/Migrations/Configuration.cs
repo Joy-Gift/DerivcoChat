@@ -43,12 +43,10 @@ namespace Chat.Web.Migrations
                     PasswordHash = userManager.PasswordHasher.HashPassword("admin")
                 };
                 userManager.Create(user);
-                userManager.AddToRole(user.Id, AdminRoleName);
+                userManager.AddToRole(user.Id, Roles.AdminRoleName);
             }
 
             context.SaveChanges();
         }
-
-        public const string AdminRoleName = "Admin";
     }
 }

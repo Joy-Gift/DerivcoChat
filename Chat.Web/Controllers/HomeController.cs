@@ -11,6 +11,8 @@ using Chat.Web.Models.ViewModels;
 using Chat.Web.Models;
 using System.Text.RegularExpressions;
 using AutoMapper;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace Chat.Web.Controllers
 {
@@ -20,6 +22,9 @@ namespace Chat.Web.Controllers
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Login", "Account");
+
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            ViewBag.IsAdminUser = userManager.IsInRole(User.Identity.GetUserId(), Chat.Web.Models.Roles.AdminRoleName);
 
             return View();
         }
