@@ -84,6 +84,8 @@ namespace Chat.Web.Hubs
                     Leave(user.CurrentRoom);
                     Groups.Add(Context.ConnectionId, roomName);
                     user.CurrentRoom = roomName;
+                    SendToRoom( roomName , "Joined");
+
 
                     // Tell others to update their list of users
                     Clients.OthersInGroup(roomName).addUser(user);
@@ -98,6 +100,7 @@ namespace Chat.Web.Hubs
         private void Leave(string roomName)
         {
             Groups.Remove(Context.ConnectionId, roomName);
+            SendToRoom(roomName, "Left");
         }
 
         public void CreateRoom(string roomName)
@@ -150,7 +153,7 @@ namespace Chat.Web.Hubs
 
         
 
-        public IEnumerable<MessageViewModel> GetMessageHistory(string roomName)
+       /* public IEnumerable<MessageViewModel> GetMessageHistory(string roomName)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -163,7 +166,7 @@ namespace Chat.Web.Hubs
 
                 return Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(messageHistory);
             }
-        }
+        }*/
 
         public IEnumerable<RoomViewModel> GetRooms()
         {
