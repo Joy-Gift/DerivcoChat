@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<h2>Chat View</h2>
+
+
+<style>
+    .container1 {
+        display: table;
+        height: 100%;
+        width: 100%;
+        background: rgba(38, 30, 211, 0.33);
+        
+    }
+    .hold{
+        display:block;
+        background-color:rgba(255, 219, 0, 0.40);
+        align-content:center;
+        text-align:center;
+        font-size:large;
+        font-style:italic;
+        border: 2px solid black;
+    }
+
+    .heads {
+        border-bottom: 1.5px solid black;
+        align-items:center;
+        align-content:center;
+        
+    }
+
+    #chatbox{
+        font-size:medium;
+        align-items:center;
+        align-content:center;
+
+    }
+
+    .send {
+        font-size: medium;
+        border-radius: 90px;
+        border-color: rgba(136, 235, 10, 0.48);
+        background-color:rgba(136, 235, 10, 0.48);
+    }
+
+    #messagebox {
+        font-size: small;
+        border-radius: 90px;
+        background-color: rgba(136, 235, 10, 0.10);
+        align-items:center;
+        align-content:center;
+        width:auto;
+        
+    }
+
+    div{
+        resize:both;
+       
+    }
+
+    .rows{
+        border: 2px solid black;
+    }
+
+    .hcol{
+        border: 2px solid black;
+    }
+
+    #tblContent{
+        width:100%;
+        align-items:center;
+        align-content:center;
+        text-align:center;
+    }
+
+    .bcol{
+       border: 2px solid black;
+       text-align:center;
+       align-content:center;
+       align-items:center;
+       
+    }
+
+    .tblBody {
+        height: 90%;
+    }
+   
+    thead{
+        height:10%;
+    }
+</style>
+<body >
+    <table id="tblContent">
+        <thead>
+            <tr class="rows">
+                <td class="hcol">
+                    Lobby
+                </td>
+                <td class="hcol">
+                    Chat Name
+                </td>
+                <td class="hcol">
+                    Users
+                </td>
+            </tr>
+        </thead>
+
+        <div>
+            <tbody class="tblBody">
+
+                <tr class="rows">
+                    <td class="bcol">
+                    Channels
+                    </td>
+                    <td class="bcol">
+                    
+                        2
+                     
+                        <input type="text" name="FirstName" placeholder="Type message" id="messagebox">
+                        <button value="Send" class="send">Send</button>
+                    
+                    </td>
+                    <td class="bcol">
+                    users
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+
+
+    </table>
+
+
+
+   <table class="container1"  >
+        <tbody>
+        <td class="hold">
+            <div class="heads" >
+                Channel
+            </div>
+            <div>
+                1
+                <br />
+            </div>
+        </td>
+        <td class="hold">
+            <div class="heads">
+                Squad
+            </div>
+            <div id="chatbox">
+                2
+                <br />
+                <input type="text" name="FirstName" placeholder="Type message" id="messagebox">
+                <button value="Send" class="send">Send</button>
+            </div>
+        </td>
+        <td class="hold">
+            <div class="heads">
+                User number
+            </div>
+            <div>
+                3
+                <br />
+            </div>
+        </td>
+        </tbody>
+    </table>
+</body>

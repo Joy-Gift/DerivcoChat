@@ -1,0 +1,105 @@
+﻿@model ChatAppWinterSchool.LoginCredentials
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .btn {
+        border-radius: 90px;
+        box-shadow: rgb(40, 40, 40) 2px 2px;
+    }
+
+    .side {
+        margin-right: 0%;
+        width: 100px;
+        margin-top: 10px;
+        margin-left: 50%;
+        font-size: xx-large;
+        font-style: italic;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .text-center {
+        margin-left: 55%;
+    }
+
+    h2 {
+        font-size: xx-large;
+        font-style: italic;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    label {
+        font-size: xx-large;
+        font-style: italic;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .logo {
+        width: 20%;
+        height: 20%;
+    }
+
+    .logodiv {
+        margin-right: 80%;
+        width: 40%;
+        height: 50%;
+    }
+
+  
+</style>
+
+
+<div class="text-center">
+    <h2>Log in</h2>
+</div>
+
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    if (ViewBag.Message != null)
+    {
+        <div style="border:1px solid red">
+            @ViewBag.Message
+        </div>
+    }
+
+    <table>
+        <tr>
+            <td class="logodiv">
+                <img class="logo" src="~/images/kisspng-online-chat-computer-icons-livechat-chat-room-clip-live-chat-5b4770fcd337c7.3008119815314086368652.png" />
+            </td>
+
+            
+            <td class="Uname">
+
+                @Html.LabelFor(model => model.NickName, "Username:")
+                @Html.TextBoxFor(model => model.NickName)
+                @Html.ValidationMessageFor(model => model.NickName)
+
+            </td>
+
+            <td class="Pword">
+
+                @Html.LabelFor(model => model.Password, "Password:")
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="btnLog">
+
+                <button class="btn" type="submit">Login</button>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+
+
+}

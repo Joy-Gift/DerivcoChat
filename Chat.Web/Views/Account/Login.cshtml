@@ -1,0 +1,114 @@
+﻿@using Chat.Web.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<style>
+
+    body {
+        background:center;
+        background: linear-gradient(45deg, rgba(188,235,183,1) 2%, rgba(188,235,183,1) 10%, rgba(96,202,209,1) 32%, rgba(33,180,226,1) 47%, rgba(113,206,239,1) 68%);
+       
+
+        width:100%;
+        height:100%;
+
+    }
+
+    .col-md-12 {
+        width: 30%;
+        height: 30%;
+        text-align: center;
+        align-items: center center;
+        align-content: center center;
+        margin-top: 15%;
+        margin-left: 60%;
+        position: fixed;
+        
+
+        font-size:large;
+        font-style:italic;
+    }
+
+
+
+    #profile-img{
+        width:200px;
+        height:200px;
+    }
+    
+    #logo{
+        position:absolute;
+        margin-right:50%;
+        
+    }
+
+    .logdiv{
+        
+        width:20%;
+        height:30%;
+        margin-left:8%;
+        margin-top: 5%;
+        position:absolute;
+    }
+
+    input{
+        border-radius:40px;
+        text-align:center;
+        width:100%;
+        height:50%;
+    }
+   
+    
+    
+    
+
+</style>
+
+<div class="lr-container login-container">
+
+    <div class=" logdiv">
+        <img id="logo" src="~/Content/logo/kisspng-online-chat-computer-icons-livechat-chat-room-clip-live-chat-5b4770fcd337c7.3008119815314086368652.png" />
+    </div>
+
+    <div class="col-md-12">
+           
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-11">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username" }) 
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-11">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" } )
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <input type="submit" value="Sign in" class="btn btn-default btn-signin" />
+                    </div>
+                </div>
+            }
+        @Html.ActionLink("Don't have an Account?", "Register", "Account")
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
