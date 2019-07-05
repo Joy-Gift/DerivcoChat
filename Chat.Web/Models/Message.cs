@@ -19,5 +19,7 @@ namespace Chat.Web.Models
 
         [Required]
         public virtual Room ToRoom { get; set; }
+
+        public bool IsAdmin { get; set; }
     }
 }

@@ -119,6 +119,10 @@
         color: darkred;
         font-size: larger;
     }
+
+    .admin {
+        background-color: red;
+    }
 </style>
 
 
@@ -197,7 +201,7 @@
                                     <div class="left-side">
                                         <img src="~/Content/icons/avatar1.png" class="message-avatar" data-bind="attr: { src: $data.avatar }" />
                                     </div>
-                                    <div class="message-content">
+                                    <div class="message-content" data-bind="css: { admin: $data.isAdmin }">
                                         <span class="author" data-bind="text:$data.from"></span>
                                         <span class="timestamp">
                                             <i class="glyphicon glyphicon-time"></i>

@@ -7,12 +7,16 @@ using Chat.Web.Models;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Chat.Web.Hubs
 {
     [Authorize]
     public class ChatHub : Hub
     {
+       
+
         #region Properties
         /// <summary>
         /// List of online users
@@ -35,9 +39,7 @@ namespace Chat.Web.Hubs
         {
            SendToRoom(roomName, message);
         }
-
-      
-
+         
         public void SendToRoom(string roomName, string message)
         {
             try
@@ -47,20 +49,26 @@ namespace Chat.Web.Hubs
                     var user = db.Users.Where(u => u.UserName == IdentityName).FirstOrDefault();
                     var room = db.Rooms.Where(r => r.Name == roomName).FirstOrDefault();
 
+                    var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    bool isAdminUser = userManager.IsInRole(user.Id, Chat.Web.Models.Roles.AdminRoleName);
+
                     // Create and save message in database
                     Message msg = new Message()
                     {
                         Content = Regex.Replace(message, @"(?i)<(?!img|a|/a|/img).*?>", String.Empty),
                         Timestamp = DateTime.Now.Ticks.ToString(),
                         FromUser = user,
-                        ToRoom = room
+                        ToRoom = room,
+                        IsAdmin = isAdminUser 
                     };
-                    db.Messages.Add(msg);
-                    db.SaveChanges();
 
-                    // Broadcast the message
-                    var messageViewModel = Mapper.Map<Message, MessageViewModel>(msg);
-                    Clients.Group(roomName).newMessage(messageViewModel);
+                        db.Messages.Add(msg);
+                        db.SaveChanges();
+
+                        // Broadcast the message
+                        var messageViewModel = Mapper.Map<Message, MessageViewModel>(msg);
+                        Clients.Group(roomName).newMessage(messageViewModel);
+                    
                 }
             }
             catch (Exception)
