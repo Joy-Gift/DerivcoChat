@@ -12,5 +12,6 @@ namespace Chat.Web.Models.ViewModels
         public string From { get; set; }
         public string To { get; set; }
         public string Avatar { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

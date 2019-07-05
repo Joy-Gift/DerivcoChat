@@ -16,7 +16,8 @@
             messageView.Timestamp,
             messageView.From,
             isMine,
-            messageView.Avatar);
+            messageView.Avatar,
+            messageView.IsAdmin);
         model.chatMessages.push(message);
         $(".chat-body").animate({ scrollTop: $(".chat-body")[0].scrollHeight }, 1000);
     };
@@ -163,7 +164,8 @@
                                                      result[i].Timestamp,
                                                      result[i].From,
                                                      isMine,
-                                                     result[i].Avatar))
+                                                     result[i].Avatar,
+                                                     result[i].IsAdmin))
                 }
 
                 $(".chat-body").animate({ scrollTop: $(".chat-body")[0].scrollHeight }, 1000);
@@ -218,13 +220,14 @@
         self.device = ko.observable(device);
     }
 
-    function ChatMessage(content, timestamp, from, isMine, avatar) {
+    function ChatMessage(content, timestamp, from, isMine, avatar , isAdmin) {
         var self = this;
         self.content = ko.observable(content);
         self.timestamp = ko.observable(timestamp);
         self.from = ko.observable(from);
         self.isMine = ko.observable(isMine);
         self.avatar = ko.observable(avatar);
+        self.isAdmin = ko.observable(isAdmin);
     }
 
     var model = new Model();
